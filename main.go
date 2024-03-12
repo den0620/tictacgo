@@ -111,7 +111,7 @@ func main() {
     var winner int
 
     for i := 0; i < 2; i++ {
-        fmt.Printf("Choose Skin (char) for Player %d\ndefault is '%s': ", i+1, PlayerSkin[i])
+        fmt.Printf("Choose Skin (prefer char) for Player %d\ndefault is '%s': ", i+1, PlayerSkin[i])
         fmt.Scanln(&tmpstr)
         if tmpstr != "" {
             PlayerSkin[i] = tmpstr
