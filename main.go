@@ -72,7 +72,7 @@ func startgame() int {
         printMatrix(&field)
         for { // repeat 'til proper num
             fmt.Print("Use numpad to chose (number)\nYour move: ")
-            fmt.Scan(&numkey)
+            fmt.Scanln(&numkey)
             if 0 < numkey && numkey < 10 { // numkey is numkey and convert to index
                 // so num is in range but is this cell free?
                 i = 2 - (numkey-1)/3
