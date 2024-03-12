@@ -32,7 +32,7 @@ func printMatrix(matrix *[3][3]int) {
 }
 
 
-func end(matrix *[3][3]int) int { // check if endgame conditions are met and return winner / 0 is nobody / 1 is P1 / 2 is P2
+func end(matrix *[3][3]int) int { // check if endgame conditions are met and return winner / 0 is space / 1 is P1 / 2 is P2 / 3 is draw
     // All win cases
     for i := 0; i < 3; i++ { // search all rows for wins
         if matrix[i][0] == matrix[i][1] && matrix[i][1] == matrix[i][2] {
@@ -90,7 +90,8 @@ func startgame() int {
             case 2:
                 turn = 1
         }
-        if end(&field) != 0 {
+		winner = end(&field)
+        if winner != 0 {
             break
         }
     }
@@ -110,7 +111,7 @@ func main() {
     var winner int
 
     for i := 0; i < 2; i++ {
-        fmt.Printf("Choose Skin (char) for Player %d\ndefault is '%s': ", i, PlayerSkin[i])
+        fmt.Printf("Choose Skin (char) for Player %d\ndefault is '%s': ", i+1, PlayerSkin[i])
         fmt.Scanln(&tmpstr)
         if tmpstr != "" {
             PlayerSkin[i] = tmpstr
@@ -121,9 +122,13 @@ func main() {
     var EC bool = false
     for EC != true { 
         winner = startgame()
-        PlayerWins[winner]++
+		if winner != 3 {
+        	PlayerWins[winner-1]++
 
-        fmt.Printf("\nPlayer %d '%s' won!\n\n", winner + 1, PlayerSkin[winner])
+        	fmt.Printf("\nPlayer %d '%s' won!\n\n", winner, PlayerSkin[winner-1])
+		} else {
+			fmt.Printf("\nThat's a draw!\n\n")
+		}
         
         fmt.Print("Would you like to play again?\n(Y/n): ")
         fmt.Scanln(&tmpstr)
