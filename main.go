@@ -105,7 +105,9 @@ func main() {
     PlayerSkin[0] = "X"
     PlayerSkin[1] = "O"
 
-    fmt.Print("===== Tic Tac Go =====\n||   CLI  edition   ||\n======================\n\n")
+	fmt.Println("===== Tic Tac Go =====")
+	fmt.Println("||   CLI  edition   ||")
+	fmt.Println("======================\n")
 
     var tmpstr string
     var winner int
@@ -144,7 +146,9 @@ func main() {
                 EC = true
         }
     }
-
-    fmt.Printf("\n======= Score ========\nPlayer 1: %d\nPlayer 2: %d\n\n", PlayerWins[0], PlayerWins[1])
+	
+    fmt.Println("\n======= Score ========")
+	fmt.Printf("Player 1 '%s': %d\n", PlayerSkin[0], PlayerWins[0])
+	fmt.Printf("Player 2 '%s': %d\n", PlayerSkin[1], PlayerWins[1])
     fmt.Print("===== Goodbye :3 =====\n")
 }
